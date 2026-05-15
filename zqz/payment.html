@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán - EcoShop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- HEADER -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-x-4">
+                    <a href="abc.html" class="text-emerald-600 hover:text-emerald-700">
+                        <i class="fa-solid fa-arrow-left text-xl"></i>
+                    </a>
+                    <div class="flex items-center gap-x-3">
+                        <div class="w-10 h-10 bg-emerald-600 rounded-2xl flex items-center justify-center text-white text-xl shadow-inner">
+                            💳
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900">Thanh toán</h1>
+                            <p class="text-sm text-gray-500">Hoàn tất đơn hàng của bạn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center gap-x-4">
+                    <div class="flex items-center gap-x-2 text-sm text-gray-600">
+                        <i class="fa-solid fa-shield-alt text-emerald-500"></i>
+                        <span>Thanh toán an toàn</span>
+                    </div>
+                    <div class="flex items-center gap-x-2 text-sm text-gray-600">
+                        <i class="fa-solid fa-truck text-emerald-500"></i>
+                        <span>Giao hàng tận nơi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PROGRESS STEPS -->
+    <div class="bg-white border-b">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                        <span class="ml-2 text-sm font-medium text-emerald-600">Giỏ hàng</span>
+                    </div>
+                    <div class="w-12 h-0.5 bg-emerald-600 mx-4"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                        <span class="ml-2 text-sm font-medium text-emerald-600">Thanh toán</span>
+                    </div>
+                    <div class="w-12 h-0.5 bg-gray-300 mx-4"></div>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                        <span class="ml-2 text-sm font-medium text-gray-600">Hoàn thành</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- LEFT COLUMN - FORM -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- SHIPPING INFORMATION -->
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                        <i class="fa-solid fa-truck text-emerald-500 mr-3"></i>
+                        Thông tin giao hàng
+                    </h2>
+                    <form id="shipping-form" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Họ và tên *</label>
+                                <input type="text" id="full-name" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Số điện thoại *</label>
+                                <input type="tel" id="phone" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                            <input type="email" id="email" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Địa chỉ giao hàng *</label>
+                            <textarea id="address" required rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ghi chú (tùy chọn)</label>
+                            <textarea id="notes" rows="2" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500" placeholder="Ghi chú về đơn hàng..."></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- PAYMENT METHOD -->
+                <div class="bg-white rounded-xl shadow-sm border p-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6 flex items-center">
+                        <i class="fa-solid fa-credit-card text-emerald-500 mr-3"></i>
+                        Phương thức thanh toán
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="payment-method-option selected" data-method="cod">
+                            <div class="flex items-center">
+                                <input type="radio" name="payment-method" value="cod" checked class="text-emerald-600 focus:ring-emerald-500">
+                                <div class="ml-3 flex items-center">
+                                    <i class="fa-solid fa-money-bill-wave text-2xl text-emerald-600 mr-3"></i>
+                                    <div>
+                                        <div class="font-medium text-gray-900">Thanh toán khi nhận hàng (COD)</div>
+                                        <div class="text-sm text-gray-600">Thanh toán bằng tiền mặt khi nhận hàng</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-method-option" data-method="bank">
+                            <div class="flex items-center">
+                                <input type="radio" name="payment-method" value="bank" class="text-emerald-600 focus:ring-emerald-500">
+                                <div class="ml-3 flex items-center">
+                                    <i class="fa-solid fa-university text-2xl text-blue-600 mr-3"></i>
+                                    <div>
+                                        <div class="font-medium text-gray-900">Chuyển khoản ngân hàng</div>
+                                        <div class="text-sm text-gray-600">Thanh toán qua chuyển khoản</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-method-option" data-method="momo">
+                            <div class="flex items-center">
+                                <input type="radio" name="payment-method" value="momo" class="text-emerald-600 focus:ring-emerald-500">
+                                <div class="ml-3 flex items-center">
+                                    <i class="fa-solid fa-mobile-alt text-2xl text-pink-600 mr-3"></i>
+                                    <div>
+                                        <div class="font-medium text-gray-900">Ví điện tử MoMo</div>
+                                        <div class="text-sm text-gray-600">Thanh toán nhanh qua MoMo</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bank transfer details -->
+                    <div id="bank-details" class="hidden mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <h4 class="font-medium text-blue-900 mb-2">Thông tin chuyển khoản:</h4>
+                        <div class="text-sm text-blue-800 space-y-1">
+                            <p><strong>Ngân hàng:</strong> Vietcombank</p>
+                            <p><strong>Số tài khoản:</strong> 1234567890</p>
+                            <p><strong>Chủ tài khoản:</strong> ECO SHOP VIETNAM</p>
+                            <p><strong>Nội dung:</strong> [Mã đơn hàng] - [Họ tên]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN - ORDER SUMMARY -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-sm border p-6 sticky top-6">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Tóm tắt đơn hàng</h2>
+
+                    <!-- Order items -->
+                    <div id="order-items" class="space-y-4 mb-6 max-h-64 overflow-y-auto">
+                        <!-- Items will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Order totals -->
+                    <div class="border-t pt-4 space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Tạm tính:</span>
+                            <span id="subtotal" class="font-medium">0đ</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600">Phí vận chuyển:</span>
+                            <span id="shipping-fee" class="font-medium text-green-600">Miễn phí</span>
+                        </div>
+                        <div class="border-t pt-3">
+                            <div class="flex justify-between text-lg font-bold">
+                                <span>Tổng cộng:</span>
+                                <span id="total-amount" class="text-emerald-600">0đ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Place order button -->
+                    <button id="place-order-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-lg font-semibold text-lg mt-6 transition-colors">
+                        <i class="fa-solid fa-check mr-2"></i>
+                        Đặt hàng
+                    </button>
+
+                    <!-- Terms -->
+                    <div class="mt-4 text-xs text-gray-500 text-center">
+                        Bằng việc đặt hàng, bạn đồng ý với <a href="#" class="text-emerald-600 hover:underline">Điều khoản dịch vụ</a> và <a href="#" class="text-emerald-600 hover:underline">Chính sách bảo mật</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div id="success-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl max-w-md w-full mx-4 text-center">
+            <div class="px-6 py-8">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-check text-3xl text-green-600"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Đặt hàng thành công!</h3>
+                <p class="text-gray-600 mb-6">Cảm ơn bạn đã mua sắm tại EcoShop. Chúng tôi sẽ xử lý đơn hàng trong vòng 24h.</p>
+                <div class="bg-gray-50 rounded-lg p-4 mb-6">
+                    <p class="text-sm text-gray-600">Mã đơn hàng:</p>
+                    <p class="font-mono font-bold text-lg text-emerald-600" id="order-code"></p>
+                </div>
+                <div class="flex gap-x-3">
+                    <button onclick="window.location.href='abc.html'" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-medium">
+                        Tiếp tục mua sắm
+                    </button>
+                    <button onclick="printOrder()" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 py-3 rounded-lg font-medium">
+                        In đơn hàng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="payment.js"></script>
+</body>
+</html>

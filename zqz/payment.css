@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.payment-method-option {
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.payment-method-option:hover {
+    border-color: #10b981;
+    background-color: #f0fdf4;
+}
+
+.payment-method-option.selected {
+    border-color: #10b981;
+    background-color: #f0fdf4;
+}
+
+.payment-method-option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+}
+
+.order-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.order-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.order-item-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.order-item-details .name {
+    font-weight: 500;
+    color: #111827;
+    margin-bottom: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.order-item-details .price {
+    color: #059669;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-input:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.sticky {
+    position: sticky;
+    top: 24px;
+}
+
+.modal-overlay {
+    backdrop-filter: blur(4px);
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-primary {
+    background-color: #10b981;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #059669;
+}
+
+.btn-secondary {
+    background-color: #6b7280;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #4b5563;
+}
+
+.progress-step {
+    transition: all 0.3s ease;
+}
+
+.progress-step.active {
+    background-color: #10b981;
+    color: white;
+}
+
+.progress-step.completed {
+    background-color: #10b981;
+    color: white;
+}
+
+.progress-line {
+    height: 2px;
+    background-color: #e5e7eb;
+    transition: background-color 0.3s ease;
+}
+
+.progress-line.active {
+    background-color: #10b981;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .sticky {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .payment-method-option {
+        padding: 12px;
+    }
+
+    .order-item {
+        padding: 8px;
+    }
+
+    .order-item img {
+        width: 50px;
+        height: 50px;
+    }
+}

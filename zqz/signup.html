@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - EcoShop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body class="bg-gradient-to-br from-emerald-50 to-teal-50 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <a href="abc.html" class="inline-flex items-center gap-x-3 text-emerald-600 hover:text-emerald-700 mb-6">
+                <div class="w-10 h-10 bg-emerald-600 rounded-2xl flex items-center justify-center text-white text-xl shadow-inner">
+                    🌱
+                </div>
+                <span class="text-2xl font-bold heading-font">EcoShop</span>
+            </a>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Tham gia EcoShop</h1>
+            <p class="text-gray-600">Tạo tài khoản để bắt đầu hành trình sống xanh</p>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="bg-white rounded-3xl shadow-xl p-8">
+            <form id="signup-form" class="space-y-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Họ</label>
+                        <input type="text" id="first-name" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                               placeholder="Nhập họ">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tên</label>
+                        <input type="text" id="last-name" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                               placeholder="Nhập tên">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <div class="relative">
+                        <input type="email" id="signup-email" required
+                               class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                               placeholder="Nhập địa chỉ email">
+                        <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Số điện thoại</label>
+                    <div class="relative">
+                        <input type="tel" id="signup-phone" required
+                               class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                               placeholder="Nhập số điện thoại">
+                        <i class="fa-solid fa-phone absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu</label>
+                    <div class="relative">
+                        <input type="password" id="signup-password" required
+                               class="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                               placeholder="Tạo mật khẩu (tối thiểu 6 ký tự)">
+                        <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <button type="button" onclick="togglePassword('signup-password')" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                            <i class="fa-solid fa-eye" id="signup-eye-icon"></i>
+                        </button>
+                    </div>
+                    <div class="mt-2">
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="fa-solid fa-info-circle mr-1"></i>
+                            Mật khẩu phải có ít nhất 6 ký tự
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Xác nhận mật khẩu</label>
+                    <div class="relative">
+                        <input type="password" id="confirm-password" required
+                               class="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                               placeholder="Nhập lại mật khẩu">
+                        <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <button type="button" onclick="togglePassword('confirm-password')" class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                            <i class="fa-solid fa-eye" id="confirm-eye-icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-start">
+                    <input type="checkbox" id="agree-terms" required class="mt-1 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500">
+                    <label class="ml-2 text-sm text-gray-600">
+                        Tôi đồng ý với <a href="#" class="text-emerald-600 hover:text-emerald-700">Điều khoản dịch vụ</a> và <a href="#" class="text-emerald-600 hover:text-emerald-700">Chính sách bảo mật</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-semibold text-lg transition-colors">
+                    <i class="fa-solid fa-user-plus mr-2"></i>
+                    Tạo tài khoản
+                </button>
+            </form>
+
+            <!-- Social Signup -->
+            <div class="mt-8">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-4 bg-white text-gray-500">hoặc đăng ký với</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-2 gap-4">
+                    <button onclick="signupWithGoogle()" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors">
+                        <i class="fa-brands fa-google text-red-500 mr-3"></i>
+                        <span class="text-sm font-medium">Google</span>
+                    </button>
+                    <button onclick="signupWithFacebook()" class="flex items-center justify-center px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors">
+                        <i class="fa-brands fa-facebook text-blue-600 mr-3"></i>
+                        <span class="text-sm font-medium">Facebook</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8">
+            <p class="text-gray-600">
+                Đã có tài khoản?
+                <a href="login.html" class="text-emerald-600 hover:text-emerald-700 font-semibold">Đăng nhập</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

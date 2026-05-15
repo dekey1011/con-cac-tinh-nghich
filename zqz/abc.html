@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoShop - Sống Xanh Cho Tương Lai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="abc.css">
+</head>
+<body class="tail-container text-gray-800 overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-emerald-600 rounded-2xl flex items-center justify-center text-white text-2xl shadow-inner">
+                    🌱
+                </div>
+                <div><span class="text-3xl font-bold tracking-tighter heading-font text-emerald-700">EcoShop</span>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#" onclick="smoothScrollTo('categories')" class="hover:text-emerald-600 transition-colors">Danh mục</a>
+                <a href="#" onclick="smoothScrollTo('featured')" class="hover:text-emerald-600 transition-colors">Sản phẩm</a>
+                <a href="#" onclick="smoothScrollTo('benefits')" class="hover:text-emerald-600 transition-colors">Lợi ích</a>
+                <a href="#" onclick="smoothScrollTo('testimonials')" class="hover:text-emerald-600 transition-colors">Đánh giá</a>
+                <a href="admin.html" class="text-orange-600 hover:text-orange-700 transition-colors font-semibold">
+                    <i class="fa-solid fa-cog mr-1"></i>Admin
+                </a>
+                <div class="flex items-center gap-x-4 ml-4 pl-4 border-l border-gray-300">
+                    <a href="login.html" class="text-gray-700 hover:text-emerald-600 transition-colors">Đăng nhập</a>
+                    <a href="signup.html" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">Đăng ký</a>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-x-6">
+                <div class="relative hidden md:block">
+                    <input id="search-input" 
+                           type="text" 
+                           placeholder="Tìm sản phẩm xanh..." 
+                           class="bg-white border border-gray-200 focus:border-emerald-500 focus:ring-emerald-500 w-72 pl-10 py-3 rounded-3xl text-sm outline-none transition-all">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+
+                <button onclick="toggleCart()" 
+                        class="relative p-3 hover:bg-emerald-50 rounded-2xl transition-colors">
+                    <i class="fa-solid fa-bag-shopping text-xl text-emerald-700"></i>
+                    <span id="cart-count" 
+                          class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                </button>
+
+                <button onclick="toggleMobileMenu()" 
+                        class="md:hidden p-3 hover:bg-emerald-50 rounded-2xl transition-colors">
+                    <i class="fa-solid fa-bars text-2xl text-emerald-700"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-6 py-8 flex flex-col gap-y-6 text-lg">
+                <a href="#" onclick="toggleMobileMenu()" class="hover:text-emerald-600">Danh mục</a>
+                <a href="#" onclick="toggleMobileMenu()" class="hover:text-emerald-600">Sản phẩm nổi bật</a>
+                <a href="#" onclick="toggleMobileMenu()" class="hover:text-emerald-600">Lợi ích xanh</a>
+                <a href="#" onclick="toggleMobileMenu()" class="hover:text-emerald-600">Khách hàng nói gì</a>
+                <a href="admin.html" onclick="toggleMobileMenu()" class="text-orange-600 hover:text-orange-700 font-semibold">
+                    <i class="fa-solid fa-cog mr-2"></i>Admin
+                </a>
+                <div class="pt-4 border-t space-y-3">
+                    <a href="login.html" onclick="toggleMobileMenu()" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 rounded-2xl font-medium text-center transition-colors">
+                        Đăng nhập
+                    </a>
+                    <a href="signup.html" onclick="toggleMobileMenu()" class="block w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-2xl font-medium text-center transition-colors">
+                        Đăng ký
+                    </a>
+                </div>
+                <div class="pt-4 border-t">
+                    <button onclick="toggleMobileMenu()" 
+                            class="w-full bg-emerald-600 text-white py-4 rounded-3xl font-semibold">
+                            Mua sắm ngay
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="hero" class="hero-bg h-screen flex items-center text-white relative">
+        <div class="max-w-5xl mx-auto px-6 pt-20">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-x-2 bg-white/20 backdrop-blur-md px-6 py-2 rounded-3xl text-sm mb-6">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                    <span class="font-medium">100% THÂN THIỆN VỚI MÔI TRƯỜNG</span>
+                </div>
+                
+                <h1 class="hero-title text-6xl md:text-7xl leading-none font-bold heading-font mb-6 tracking-tighter">
+                    EcoShop<br>
+                    <span class="text-emerald-300">Sống Xanh Cho Tương Lai</span>
+                </h1>
+                
+                <p class="text-xl md:text-2xl text-white/90 mb-10 max-w-md">
+                    Những sản phẩm bền vững, chất lượng cao giúp bạn sống xanh mỗi ngày.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="document.getElementById('featured').scrollIntoView({ behavior: 'smooth' })" 
+                            class="bg-white text-emerald-700 hover:bg-emerald-50 px-10 py-5 rounded-3xl font-semibold text-lg flex items-center gap-x-3 group">
+                        Mua Ngay
+                        <i class="fa-solid fa-arrow-right group-active:translate-x-1 transition"></i>
+                    </button>
+                    
+                    <button onclick="document.getElementById('benefits').scrollIntoView({ behavior: 'smooth' })" 
+                            class="border border-white/70 hover:bg-white/10 px-8 py-5 rounded-3xl font-medium transition">
+                        Tìm hiểu thêm
+                    </button>
+                </div>
+                
+                <div class="mt-16 flex items-center gap-x-8 text-sm">
+                    <div class="flex -space-x-4">
+                        <div class="w-8 h-8 bg-white rounded-2xl border-2 border-white overflow-hidden">
+                            <img src="https://picsum.photos/id/64/64" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-8 h-8 bg-white rounded-2xl border-2 border-white overflow-hidden">
+                            <img src="https://picsum.photos/id/201/64" alt="" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold">Hơn 15.000 khách hàng</div>
+                        <div class="text-emerald-200 text-sm">đang sống xanh cùng EcoShop</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Floating badges -->
+        <div class="absolute bottom-12 right-12 hidden lg:flex flex-col gap-3">
+            <div class="bg-white/90 text-emerald-800 text-xs font-medium px-5 py-3 rounded-3xl shadow-xl flex items-center gap-x-2 backdrop-blur">
+                <i class="fa-solid fa-leaf text-emerald-500"></i>
+                <span>Carbon Neutral</span>
+            </div>
+            <div class="bg-white/90 text-emerald-800 text-xs font-medium px-5 py-3 rounded-3xl shadow-xl flex items-center gap-x-2 backdrop-blur">
+                <i class="fa-solid fa-recycle text-emerald-500"></i>
+                <span>100% Tái chế</span>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 flex flex-col items-center">
+            <div class="text-xs tracking-widest mb-2 opacity-75">SCROLL ĐỂ KHÁM PHÁ</div>
+            <div class="w-6 h-10 border-2 border-white/60 rounded-3xl flex justify-center pt-2">
+                <div class="w-1 h-2 bg-white rounded-full animate-scroll"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CATEGORIES -->
+    <section id="categories" class="py-20 leaf-bg bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-3xl text-sm font-medium">KHÁM PHÁ</span>
+                <h2 class="text-5xl heading-font font-bold mt-4">Danh mục sản phẩm</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Category 1 -->
+                <div onclick="alert('Đang xem Túi &amp; Balo')" 
+                     class="category-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                    <div class="h-48 bg-[url('https://picsum.photos/id/201/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <div class="font-semibold text-lg">Túi vải &amp; Balo</div>
+                        <div class="text-emerald-600 text-sm">40+ sản phẩm</div>
+                    </div>
+                </div>
+                
+                <!-- Category 2 -->
+                <div onclick="alert('Đang xem Đồ dùng cá nhân')" 
+                     class="category-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                    <div class="h-48 bg-[url('https://picsum.photos/id/251/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <div class="font-semibold text-lg">Đồ dùng cá nhân</div>
+                        <div class="text-emerald-600 text-sm">Bàn chải, xà phòng...</div>
+                    </div>
+                </div>
+                
+                <!-- Category 3 -->
+                <div onclick="alert('Đang xem Quần áo')"
+                class="category-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                    <div class="h-48 bg-[url('https://picsum.photos/id/1005/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <div class="font-semibold text-lg">Thời trang bền vững</div>
+                        <div class="text-emerald-600 text-sm">Organic cotton</div>
+                    </div>
+                </div>
+                
+                <!-- Category 4 -->
+                <div onclick="alert('Đang xem Nhà bếp')" 
+                     class="category-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                    <div class="h-48 bg-[url('https://picsum.photos/id/431/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <div class="font-semibold text-lg">Đồ dùng nhà bếp</div>
+                        <div class="text-emerald-600 text-sm">Bình nước, hộp cơm</div>
+                    </div>
+                </div>
+                
+                <!-- Category 5 -->
+                <div onclick="alert('Đang xem Chăm sóc da')" 
+                     class="category-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                    <div class="h-48 bg-[url('https://picsum.photos/id/669/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <div class="font-semibold text-lg">Chăm sóc cá nhân</div>
+                        <div class="text-emerald-600 text-sm">Mỹ phẩm thiên nhiên</div>
+                    </div>
+                </div>
+                
+                <!-- Category 6 -->
+                <div onclick="alert('Đang xem Quà tặng')" 
+                     class="category-card bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 cursor-pointer">
+                    <div class="h-48 bg-[url('https://picsum.photos/id/870/600/400')] bg-cover"></div>
+                    <div class="p-6">
+                        <div class="font-semibold text-lg">Quà tặng xanh</div>
+                        <div class="text-emerald-600 text-sm">Cho người thân</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section id="featured" class="py-20 bg-gradient-to-b from-white to-emerald-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-emerald-600 font-medium">SẢN PHẨM NỔI BẬT</span>
+                    <h2 class="text-5xl heading-font font-bold">Chọn lựa hôm nay</h2>
+                </div>
+                <a href="#" onclick="alert('Xem tất cả sản phẩm')"
+                class="hidden md:flex items-center gap-x-2 text-emerald-700 hover:text-emerald-800 font-medium">
+                    Xem tất cả 
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="products-grid">
+                <!-- Products populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section id="benefits" class="py-24 bg-emerald-900 text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <div class="md:col-span-5">
+                    <div class="sticky top-28">
+                        <span class="inline-block px-5 py-2 bg-emerald-800 rounded-3xl text-emerald-300 text-sm">TẠI SAO CHỌN ECOSHOP?</span>
+                        <h2 class="text-5xl heading-font font-bold leading-tight mt-6">Mỗi sản phẩm là một bước tiến cho Trái Đất</h2>
+                        <p class="mt-8 text-emerald-100 text-lg">Chúng tôi cam kết mang đến những sản phẩm không chỉ tốt cho bạn mà còn tốt cho hành tinh.</p>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="scroll-reveal bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl p-8">
+                        <div class="text-5xl mb-6">🌍</div>
+                        <div class="text-2xl font-semibold mb-3">Giảm carbon</div>
+                        <div class="text-emerald-100">Mỗi sản phẩm giúp giảm 2.3kg CO₂ so với sản phẩm thông thường.</div>
+                    </div>
+                    <div class="scroll-reveal bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl p-8">
+                        <div class="text-5xl mb-6">♻️</div>
+                        <div class="text-2xl font-semibold mb-3">Vật liệu bền vững</div>
+                        <div class="text-emerald-100">Tre, cotton hữu cơ, nhựa tái chế và giấy tái sinh.</div>
+                    </div>
+                    <div class="scroll-reveal bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl p-8">
+                        <div class="text-5xl mb-6">🤝</div>
+                        <div class="text-2xl font-semibold mb-3">Hỗ trợ nông dân</div>
+                        <div class="text-emerald-100">Hơn 80% nguyên liệu được mua trực tiếp từ nông dân Việt Nam.</div>
+                    </div>
+                    <div class="scroll-reveal bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl p-8">
+                        <div class="text-5xl mb-6">📦</div>
+                        <div class="text-2xl font-semibold mb-3">Giao hàng xanh</div>
+                        <div class="text-emerald-100">Bao bì thân thiện, không nhựa dùng một lần.</div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl heading-font font-bold">Khách hàng nói gì về chúng tôi</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm">
+                    <div class="flex gap-x-1 text-amber-400 mb-6">
+                        ★★★★☆
+                    </div>
+                    <p class="italic text-gray-600">"Túi canvas và bình nước của EcoShop cực kỳ bền. Mình dùng hơn 1 năm vẫn như mới. Rất hài lòng!"</p>
+                    <div class="mt-8 flex items-center gap-x-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-2xl overflow-hidden">
+                            <img src="https://picsum.photos/id/64/128" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <div class="font-semibold">Nguyễn Thị Lan</div>
+                            <div class="text-xs text-gray-500">Hà Nội</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm">
+                    <div class="flex gap-x-1 text-amber-400 mb-6">
+                        ★★★★★
+                    </div>
+                    <p class="italic text-gray-600">"Mua bàn chải tre cho cả nhà. Chất lượng tuyệt vời, đóng gói đẹp và ý nghĩa. 10/10!"</p>
+                    <div class="mt-8 flex items-center gap-x-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-2xl overflow-hidden">
+                            <img src="https://picsum.photos/id/201/128" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <div class="font-semibold">Trần Minh Quân</div>
+                            <div class="text-xs text-gray-500">TP.HCM</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white border border-gray-100 p-8 rounded-3xl shadow-sm">
+                    <div class="flex gap-x-1 text-amber-400 mb-6">
+                        ★★★★☆
+                    </div>
+                    <p class="italic text-gray-600">"Quần áo organic mặc rất thoải mái. Màu sắc đẹp và đặc biệt là mình đang góp phần bảo vệ môi trường."</p>
+                    <div class="mt-8 flex items-center gap-x-3">
+                        <div class="w-10 h-10 bg-gray-200 rounded-2xl overflow-hidden">
+                          <img src="https://picsum.photos/id/1005/128" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <div class="font-semibold">Phạm Thu Hà</div>
+                            <div class="text-xs text-gray-500">Đà Nẵng</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <div class="bg-gradient-to-r from-emerald-700 to-teal-600 py-20 text-white">
+        <div class="max-w-3xl mx-auto text-center px-6">
+            <h2 class="text-5xl heading-font font-bold mb-6">Sẵn sàng sống xanh cùng chúng tôi?</h2>
+            <p class="text-xl mb-10">Hàng ngàn sản phẩm đang chờ bạn. Đặt hàng ngay hôm nay và nhận ưu đãi đặc biệt.</p>
+            <button onclick="document.getElementById('featured').scrollIntoView({ behavior: 'smooth' })" 
+                    class="bg-white text-emerald-700 px-14 py-6 rounded-3xl text-xl font-semibold hover:scale-105 transition-transform shadow-2xl">
+                Bắt đầu mua sắm
+            </button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-950 text-gray-400">
+        <div class="max-w-7xl mx-auto px-6 pt-20 pb-12">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-y-12">
+                <div>
+                    <div class="flex items-center gap-x-3 text-white mb-6">
+                        <div class="w-9 h-9 bg-emerald-600 rounded-2xl flex items-center justify-center text-3xl">🌱</div>
+                        <span class="text-3xl font-bold heading-font">EcoShop</span>
+                    </div>
+                    <p class="text-sm leading-relaxed">Thương hiệu Việt Nam<br>Cam kết bền vững từ 2023</p>
+                    
+                    <div class="flex gap-x-5 mt-8">
+                        <i class="fa-brands fa-facebook-f hover:text-white cursor-pointer text-xl"></i>
+                        <i class="fa-brands fa-instagram hover:text-white cursor-pointer text-xl"></i>
+                        <i class="fa-brands fa-tiktok hover:text-white cursor-pointer text-xl"></i>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="text-white font-medium mb-6">Sản phẩm</div>
+                    <div class="space-y-3 text-sm">
+                        <div class="hover:text-white cursor-pointer">Túi &amp; Balo</div>
+                        <div class="hover:text-white cursor-pointer">Đồ dùng cá nhân</div>
+                        <div class="hover:text-white cursor-pointer">Thời trang</div>
+                        <div class="hover:text-white cursor-pointer">Nhà bếp</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="text-white font-medium mb-6">Công ty</div>
+                    <div class="space-y-3 text-sm">
+                      <div class="hover:text-white cursor-pointer">Về chúng tôi</div>
+                        <div class="hover:text-white cursor-pointer">Câu chuyện xanh</div>
+                        <div class="hover:text-white cursor-pointer">Blog</div>
+                        <div class="hover:text-white cursor-pointer">Liên hệ</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="text-white font-medium mb-6">Hỗ trợ</div>
+                    <div class="space-y-3 text-sm">
+                        <div class="hover:text-white cursor-pointer">Chính sách đổi trả</div>
+                        <div class="hover:text-white cursor-pointer">Câu hỏi thường gặp</div>
+                        <div class="hover:text-white cursor-pointer">Theo dõi đơn hàng</div>
+                        <div class="hover:text-white cursor-pointer">Giao hàng nhanh</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="text-white font-medium mb-6">Newsletter</div>
+                    <p class="text-sm mb-4">Nhận tin tức và ưu đãi đặc biệt mỗi tháng</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Email của bạn" 
+                               class="bg-gray-900 border border-gray-700 focus:border-emerald-500 rounded-l-3xl px-5 py-4 text-sm outline-none flex-1">
+                        <button class="bg-emerald-600 hover:bg-emerald-500 px-8 rounded-r-3xl font-medium">Đăng ký</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-20 pt-8 text-xs flex flex-col md:flex-row justify-between items-center gap-y-4">
+                <div>© 2026 EcoShop Vietnam. All rights reserved.</div>
+                <div class="flex gap-x-6 text-xs">
+                    <div>Điều khoản dịch vụ</div>
+                    <div>Chính sách bảo mật</div>
+                </div>
+                <div class="flex items-center gap-x-2">
+                    <span class="text-emerald-400">Made with ❤️ for Earth</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MINI CART MODAL -->
+    <div id="cart-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur z-[9999] flex items-end md:items-center justify-center">
+        <div onclick="event.stopImmediatePropagation()" 
+             class="bg-white w-full max-w-md md:rounded-3xl rounded-t-3xl h-[85vh] md:h-auto overflow-hidden">
+            <div class="p-6 border-b flex justify-between items-center">
+                <div class="font-semibold text-xl">Giỏ hàng của bạn</div>
+                <button onclick="toggleCart()" class="text-3xl leading-none">×</button>
+            </div>
+            
+            <div id="cart-items" class="p-6 overflow-auto" style="max-height: 60vh;">
+                <!-- Dynamic content -->
+                 <div class="text-center py-12 text-gray-400">
+                    <i class="fa-solid fa-bag-shopping text-6xl mb-4"></i>
+                    <p>Giỏ hàng trống</p>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t">
+                <div class="flex justify-between text-lg mb-6">
+                    <span>Tổng cộng</span>
+                    <span id="cart-total" class="font-semibold">0đ</span>
+                </div>
+                <button onclick="checkout()" 
+                        class="w-full bg-emerald-600 text-white py-6 rounded-3xl font-semibold text-lg">
+                    Thanh toán
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="abc.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
